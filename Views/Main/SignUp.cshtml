@@ -164,9 +164,9 @@
             $("#SUButton").click(function () {
                 var a = $("#FirstName").val();
                 var b = $("#LastName").val();
-                var c = $("#Password").val();
+                var p = $("#Password").val();
                 var d = $("#CPassword").val();
-                var e = $("#Email").val();
+                var m = $("#Email").val();
                 var f = $("#Address").val();
                 var g = $("#Gender").val();
                 var h = $("#PhoneNo").val();
@@ -184,11 +184,11 @@
 
                 $.ajax({
 
-                    url: "http://localhost:35003/api/SIGNUP/",
+                    url: "http://quickfyp51.apphb.com/api/SIGNUP",
                     type: "Post",
                     data: JSON.stringify({
-                        FirstName: a, LastName: b, Password: c,
-                        CPassword: d, Email: e, Address: f, Gender: g, PhoneNo: h,
+                        FirstName: a, LastName: b, Password: p,
+                        CPassword: d, Email: m, Address: f, Gender: g, PhoneNo: h,
                         City: i, DOBirth: j
                     }), //{ Name: name, Address: address, DOB: dob },
                     contentType: 'application/json; charset=utf-8',
@@ -264,7 +264,7 @@
                 // debugger;
                 var id = $("#Id").val();
                 $.ajax({
-                    url: "http://localhost:35003/api/SIGNUP/" + id,
+                    url: "http://quickfyp51.apphb.com/api/SIGNUP" + id,
                     type: "Delete",
                     success: function (data) {
                         alert('Deleted Successfully');
