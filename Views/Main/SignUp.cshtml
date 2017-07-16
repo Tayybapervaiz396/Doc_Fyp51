@@ -87,11 +87,11 @@
 
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input id="FirstName" style="background-color: rgba(194, 112, 76, 1); color: white" class="form-control" type="text" name="FirstName"
+                                    <input id="FirstName" style="background-color:rgba(194, 112, 76, 1)" class="form-control" type="text" name="FirstName"
                                            placeholder="First Name*" required /><br />
                                 </div>
                                 <div class="col-sm-6 ">
-                                    <input id="LastName" style="background-color: rgba(194, 112, 76, 1); color: white" class="form-control" type="text" name="LastName"
+                                    <input id="LastName" class="form-control" type="text" name="LastName"
                                            placeholder="Last Name*" required /><br />
                                 </div>
 
@@ -99,41 +99,41 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input class="form-control" style="background-color: rgba(194, 112, 76, 1); color: white" id="Password" name="Password" placeholder="Password*"
+                                    <input class="form-control" id="Password" name="Password" placeholder="Password*"
                                            type="password" />
                                     <br />
                                 </div>
                                 <div class="col-sm-6 ">
-                                    <input id="CPassword" style="background-color: rgba(194, 112, 76, 1); color: white" type="password" class="form-control" name="CPassword"
+                                    <input id="CPassword" type="password" class="form-control" name="CPassword"
                                            placeholder=" Confirm Password*" required />
                                     <br />
                                 </div>
 
 
-                            </div><input id="Email"   type="email" class="form-control" style="width: 100%; background-color: rgba(194, 112, 76, 1); color: white;" name="Email" placeholder="Email*" required><br />
+                            </div><input id="Email" type="email" class="form-control" style="width: 100%; " name="Email" placeholder="Email*" required><br />
 
-                            <input id="Address" style="background-color: rgba(194, 112, 76, 1); color: white" class="form-control" type="text" style="width: 100%; " name="Address" placeholder="Address*" required /><br />
+                            <input id="Address" class="form-control" type="text" style="width: 100%; " name="Address" placeholder="Address*" required /><br />
 
 
 
-                            <label style="  color:white">Gender:</label>  &nbsp;<input type="radio" value="Female" style="background-color:rgba(194, 112, 76, 1)" name="Gender" />
+                            <label style=" color:white">Gender:</label>  &nbsp;<input type="radio" name="Gender" />
                             <label style=" color:white">
                                 Female
                             </label>
-                            <input value="Male" type="radio" name="Gender" id="Gender" /> &nbsp;<label style=" color:white" > Male</label>
+                            <input type="radio" name="Gender" id="Gender" /> &nbsp;<label style=" color:white"> Male</label>
                             <br><br>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input id="PhoneNo" style="background-color:rgba(194, 112, 76, 1); color:white" type="tel" class="form-control" name="PhoneNo" placeholder="Phone No*" required /><br />
+                                    <input id="PhoneNo" type="tel" class="form-control" name="PhoneNo" placeholder="Phone No*" required /><br />
                                 </div>
                                 <div class="col-sm-6 ">
-                                    <input id="City" style="background-color: rgba(194, 112, 76, 1); color: white" class="form-control" type="text" name="City" placeholder="City*" required /><br />
+                                    <input id="City" class="form-control" type="text" name="City" placeholder="City*" required /><br />
                                 </div>
 
 
                             </div>
 
-                            <input id="DOBirth" style="background-color: rgba(194, 112, 76, 1); color: white" class="form-control" type="date" style="width: 100%; " name="DOBirth" placeholder=" Date of Birth*" required /><br />
+                            <input id="DOBirth" class="form-control" type="date" style="width: 100%; " name="DOBirth" placeholder=" Date of Birth*" required /><br />
 
                             <button type="submit" id="SUButton" value="Sign Up" style=" margin-left:45%; margin-bottom:2%; border-radius: 10px; font-family: Gabriola;
                   color: rgba(194, 112, 76, 1); font-size:25px; border: solid double">
@@ -159,14 +159,16 @@
 
     <script lang="ja" type="text/javascript">
         $(document).ready(function () {
-           
+            $('#linkClose').click(function () {
+                $('divError').modal('fade');
+            });
 
             $("#SUButton").click(function () {
                 var a = $("#FirstName").val();
                 var b = $("#LastName").val();
-                var p = $("#Password").val();
+                var c = $("#Password").val();
                 var d = $("#CPassword").val();
-                var m = $("#Email").val();
+                var e = $("#Email").val();
                 var f = $("#Address").val();
                 var g = $("#Gender").val();
                 var h = $("#PhoneNo").val();
@@ -174,8 +176,8 @@
                 var j = $("#DOBirth").val();
 
                 alert(a);
-                alert(c);
-                 alert(e);
+                alert(b);
+                // alert(Email);
                 //alert(Address);
                 //alert(Gender);
                 // alert(PhoneNo);
@@ -184,11 +186,11 @@
 
                 $.ajax({
 
-                    url: "http://quickfyp51.apphb.com/api/SIGNUP",
+                    url: "http://localhost:35003/api/SIGNUP/",
                     type: "Post",
                     data: JSON.stringify({
-                        FirstName: a, LastName: b, Password: p,
-                        CPassword: d, Email: m, Address: f, Gender: g, PhoneNo: h,
+                        FirstName: a, LastName: b, Password: c,
+                        CPassword: d, Email: e, Address: f, Gender: g, PhoneNo: h,
                         City: i, DOBirth: j
                     }), //{ Name: name, Address: address, DOB: dob },
                     contentType: 'application/json; charset=utf-8',
@@ -222,7 +224,7 @@
                 var data = id; +
                 $.ajax({
                     type: 'GET',
-                    url: "http://quickfyp51.apphb.com/api/SIGNUP" + data,
+                    url: "http://localhost:35003/api/SIGNUP/" + data,
                     dataType: 'json',
                     success: function (data) {
                         console.log(data);
@@ -256,6 +258,61 @@
 
 
 
+    <!--Get Code
+
+     $(document).ready(function () {
+     $.ajax({
+     url: "http://localhost:35003/api/SIGNUP/",
+     type: "Get",
+     datatype:'json',
+     success: function (data) {
+     console.log(data);
+     var str="";
+     for (var i = 0; i < data.length; i++)
+     {
+     str +="<tr>
+         ";
+         str +="
+         <td id='r"+ i +"'>" + data[i].FirstName + "</td>"
+         str +="
+         <td id='r"+ i+" '>" + data[i].LastName + "</td>"
+         str +="
+         <td id='r"+i+"'>"   + data[i].Password + "</td>
+         <td>
+             "
+             str +="
+         <td id='r"+i+"'>"   + data[i].CPassword + "</td>
+    "
+     str +="<td id='r"+ i +"'>" + data[i].Email + "</td>"
+     str +="<td id='r"+ i+" '>" + data[i].Address + "</td>"
+     str +="<td id='r"+i+"'>"   + data[i].Gender + "</td><td>
+         "
+         str +="
+     <td id='r"+i+"'>"   + data[i].PhoneNo + "</td>"
+     str +="<td id='r"+i+"'>"   + data[i].City + "</td>"
+         str +="
+     <td id='r"+i+"'>"   + data[i].DOBirth + "</td>"
+     "
+
+     str += "
+                <td id='r"+i+"'>"  data[i].DOB + "</td></tr>").appendTo("#SignUpTable");
+
+     str +=
+     <input type="submit" class="button" value="Sign In" id="Submit">
+     "
+     str +="<a href='" +data[i].Id+" '>Update</a>" ;
+     }
+     $('#abc').html(str);
+     },
+     error: function (msg) { alert(msg); }
+     });
+     });
+
+         -->
+    //Me Get Code
+    <!--
+
+    -->
     <!--Delete Code -->
 
     <script>
@@ -264,7 +321,7 @@
                 // debugger;
                 var id = $("#Id").val();
                 $.ajax({
-                    url: "http://quickfyp51.apphb.com/api/SIGNUP" + id,
+                    url: "http://localhost:35003/api/SIGNUP/" + id,
                     type: "Delete",
                     success: function (data) {
                         alert('Deleted Successfully');

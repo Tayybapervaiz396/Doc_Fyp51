@@ -194,7 +194,7 @@
                alert(Bb);
                 $.ajax({
 
-                    url: "http://quickfyp51.apphb.com/api/REGISTER",
+                    url:"http://localhost:35003/api/REGISTER/",
                     type: "Post",
                     data: JSON.stringify({
                         FirstName: Aa, LastName: Bb, Email: Cc,  PhoneNo: Ee,
@@ -232,7 +232,7 @@
                 var data = id; +
                 $.ajax({
                     type: 'GET',
-                    url: "http://quickfyp51.apphb.com/api/REGISTER" + data,
+                    url: "http://localhost:1848/api/REGISTER/" + data,
                     dataType: 'json',
                     success: function (data) {
                         console.log(data);
